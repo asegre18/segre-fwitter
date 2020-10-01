@@ -4,9 +4,9 @@ const connection = require('../config/connection');
 const fetchUsers = async () => {
   try {
     const [rows] = await connection.query(findAllUsers);
-    return Promise.resolve(rows);
+    return rows;
   } catch (e) {
-    return Promise.reject(e);
+    throw new Error(e);
   }
 };
 
