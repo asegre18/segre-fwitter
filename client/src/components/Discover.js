@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import MatchBar from './MatchBar';
+import { useSelector } from 'react-redux';
 import { useDiscover } from '../hooks/useDiscover';
 //
 const Discover = () => {
@@ -11,6 +12,10 @@ const Discover = () => {
     handleLike,
     handleDislike,
   } = useDiscover();
+
+  const { users } = useSelector(state => state.user);
+  const { fireFighters } = useSelector(state => state.fireFighters);
+  console.log(users);
   return (
     <div>
       <h1>{friendCount}</h1>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import API from '../utils/API';
-
+import { getUsers } from '../redux';
 export const useDiscover = () => {
   // Returns is an array.
   // Rule of hooks is to put them all at the top
