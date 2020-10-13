@@ -1,16 +1,23 @@
 {
     "env": {
+        "browser": true,
         "commonjs": true,
-        "es2020": true,
+        "es2021": true,
         "node": true
     },
     "extends": [
-        "airbnb-base"
+        "plugin:react/recommended",
+        "airbnb"
     ],
     "parserOptions": {
-        "ecmaVersion": 11
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12
     },
+    "plugins": [
+        "react"
+    ],
     "rules": {
-        "no-console": 0
     }
 }

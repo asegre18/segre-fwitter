@@ -1,9 +1,6 @@
 const router = require('express')
   .Router();
-const { getAllUsers } = require('../../../controllers/userController');
-const connection = require('../../../config/connection');
-const { insertUser } = require('../../../model/userQueries');
-
+const { getAllUsersApi, insertUserApi } = require('../../../controllers/userController');
 // /api/users prepended to every Route
 // Separation of concern.
 // Anything that has to do with routing stays in routing
@@ -16,11 +13,7 @@ const { insertUser } = require('../../../model/userQueries');
 // Also the controllers job to communicate between the view and the model
 //   /api/users
 router.route('/')
-  .get(getAllUsers)
-  .post(async (req, res) => {
-    const userInput = req.body;
-    const result = await connection.query(insertUser, userInput);
-    res.json(result);
-  });
+  .get(getAllUsersApi)
+  .post(insertUserApi);
 
 module.exports = router;
