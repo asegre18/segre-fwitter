@@ -31,16 +31,22 @@ export default function ButtonAppBar() {
             color="inherit">
             About</Button>
           <Button
-            to='/Discover'
+            to='/discover'
             component={Link}
             color="inherit">
             Discover
           </Button>
           <Button
-            to='/Search'
+            to='/search'
             component={Link}
             color="inherit">
             Search
+          </Button>
+          <Button
+            to='/user'
+            component={Link}
+            color="inherit">
+            User
           </Button>
         </Toolbar>
       </AppBar>
