@@ -13,7 +13,6 @@ const Discover = () => {
     handleDislike,
   } = useDiscover();
 
-  const { users } = useSelector(state => state.user);
 
   console.log(users);
   return (
