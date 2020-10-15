@@ -4,6 +4,7 @@ module.exports = {
   getAllUsersApi: async (_req, res) => {
     try {
       const users = await fetchUsers();
+      console.log(users);
       res.json(users);
     } catch (e) {
       res.status(400)
@@ -11,7 +12,9 @@ module.exports = {
     }
   },
   insertUserApi: async (req, res) => {
-    const { username } = req.body;
+    const { username, manny } = req.body;
+    console.log(req.body);
+    console.log(manny);
     try {
       const result = await insertUserToDb(username);
       const user = await fetchUserByIdFromDb(result.insertId);

@@ -14,7 +14,7 @@ const Discover = () => {
   } = useDiscover();
 
   const { users } = useSelector(state => state.user);
-  const { fireFighters } = useSelector(state => state.fireFighters);
+
   console.log(users);
   return (
     <div>
