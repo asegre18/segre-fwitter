@@ -19,6 +19,8 @@ const User = ({ users, setUser}) => {
     }
   };
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // The 2nd parameter, should be an object

@@ -16,4 +16,5 @@ router.route('/')
   .get(getAllUsersApi)
   .post(insertUserApi);
 
+
 module.exports = router;
