@@ -48,9 +48,9 @@ const insertUserToDb = async (username, password) => {
 //Delete
 const deleteUserByIdFromDb = async (userId) => {
   try {
-    const userToDelete = await connection.query(findUserByIdQuery, userId);
+    const [rows] = await connection.query(findUserByIdQuery, userId);
     await connection.query(deleteUserByIdQuery, userId);
-    return userToDelete;
+    return rows[0];
   } catch (e) {
     throw new Error(e);
   }
