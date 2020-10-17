@@ -24,4 +24,13 @@ module.exports = {
         .json(e);
     }
   },
+  getUserByIdApi: async (req, res) => {
+    const { userId } = req.params;
+    try {
+      return await fetchUserById(userId);
+    } catch (e) {
+      res.status(400)
+        .json(e);
+    }
+  },
 };

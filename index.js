@@ -1,6 +1,13 @@
 const express = require('express');
 const routes = require('./routes');
 
+// GET ALL
+//  Create One
+
+//  Getting 1 user
+//  Deleting a User
+// Updating a user
+
 const app = express();
 
 if (process.env.NODE_ENV === 'production') {

@@ -3,7 +3,7 @@ import Card from './Card';
 import MatchBar from './MatchBar';
 import { useSelector } from 'react-redux';
 import { useDiscover } from '../hooks/useDiscover';
-//
+
 const Discover = () => {
   const {
     friendCount,
@@ -14,7 +14,6 @@ const Discover = () => {
   } = useDiscover();
 
 
-  console.log(users);
   return (
     <div>
       <h1>{friendCount}</h1>

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import useUsers from '../hooks/useUsers';
+// import useUsers from '../hooks/useUsers';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
+import useUsers from '../hooks/useUsers';
 
-const User = ({ users, setUser}) => {
+const User = () => {
   const [username, setUsername] = useState('');
+  const { users, setUsers } = useUsers();
   const renderUsers = () => {
     if (users.length) {
       return users.map(({ id, username }) => {
