@@ -5,6 +5,8 @@ const {
 } = require('./userQueries');
 const connection = require('../config/connection');
 
+// All ORM functions will be called inside of the Controllers
+
 // Gets
 const fetchUsers = async () => {
   try {
@@ -33,9 +35,9 @@ const fetchUserByIdFromDb = async (userId) => {
 };
 
 // Insert
-const insertUserToDb = async (username) => {
+const insertUserToDb = async (username, password) => {
   try {
-    const [result] = await connection.query(insertUserQuery, username);
+    const [result] = await connection.query(insertUserQuery, [username, password]);
     return result;
   } catch (e) {
     throw new Error(e);

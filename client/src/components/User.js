@@ -27,7 +27,11 @@ const User = () => {
     e.preventDefault();
     // The 2nd parameter, should be an object
     // this object will become what req.body is on the controller
-    axios.post('/api/users', { username, manny: 'isNotCool', moreStuff: true, })
+    axios.post('/api/users', {
+      username,
+      password: 'isNotCool',
+      moreStuff: true,
+    })
       .then(res => {
         // push res.data into the users state
         const newUsers = [...users, res.data];
