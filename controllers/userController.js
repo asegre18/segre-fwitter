@@ -26,10 +26,12 @@ module.exports = {
     }
   },
   getUserByIdApi: async (req, res) => {
+    console.log('I AM< BROKEN');
     const { userId } = req.params;
     try {
-      return await fetchUserById(userId);
+      res.json(await fetchUserByIdFromDb(userId));
     } catch (e) {
+      console.log('i am broken', e);
       res.status(400)
         .json(e);
     }

@@ -36,12 +36,13 @@ const User = () => {
       .then(res => {
         // push res.data into the users state
         const newUsers = [...users, res.data];
+        setUsername('');
         setUsers(newUsers);
       });
   };
   return (
     <div>
-      <form noValidate autoComplete="off">
+      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <TextField
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -49,7 +50,7 @@ const User = () => {
           label="Standard"
         />
         <Button
-          onClick={handleSubmit}
+          type='submit'
           variant="contained"
           color="primary">
           Primary
