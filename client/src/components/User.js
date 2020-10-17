@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-// import useUsers from '../hooks/useUsers';
+import { Link } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-
 import useUsers from '../hooks/useUsers';
 
 const User = () => {
@@ -14,7 +13,9 @@ const User = () => {
       return users.map(({ id, username }) => {
         return (
           <div key={id}>
-            <p>Username: {username}</p>
+            <Link to={`/users/user/${id}`}>
+              <p>Username: {username}</p>
+            </Link>
           </div>
         );
       });

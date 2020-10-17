@@ -7,19 +7,20 @@ module.exports = {
       console.log(users);
       res.json(users);
     } catch (e) {
+      console.log(e);
       res.status(400)
         .json(e);
     }
   },
   insertUserApi: async (req, res) => {
-    const { username, manny } = req.body;
+    const { username, password } = req.body;
     console.log(req.body);
-    console.log(manny);
     try {
-      const result = await insertUserToDb(username);
+      const result = await insertUserToDb(username, password);
       const user = await fetchUserByIdFromDb(result.insertId);
       res.json(user);
     } catch (e) {
+      console.log(e);
       res.status(400)
         .json(e);
     }

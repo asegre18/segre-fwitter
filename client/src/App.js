@@ -16,6 +16,9 @@ function App() {
        <Route exact path="/discover" component={Discover}/>
        <Route exact path="/search" component={Search}/>
        <Route exact path="/user" component={User}/>
+       <Route exact path='/users/user/:userId'>
+         <h1>I AM USER ID COMPONENT</h1>
+       </Route>
      </Router>
   );
 }
