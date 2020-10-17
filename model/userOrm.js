@@ -2,6 +2,7 @@ const {
   findAllUsers,
   findUserByIdQuery,
   insertUserQuery,
+  deleteUserByIdQuery,
 } = require('./userQueries');
 const connection = require('../config/connection');
 
@@ -44,8 +45,20 @@ const insertUserToDb = async (username, password) => {
   }
 };
 
+//Delete
+const deleteUserByIdFromDb = async (userId) => {
+  try {
+    const userToDelete = await connection.query(findUserByIdQuery, userId);
+    await connection.query(deleteUserByIdQuery, userId);
+    return userToDelete;
+  } catch (e) {
+    throw new Error(e);
+  }
+};
+
 module.exports = {
   fetchUsers,
   fetchUserByIdFromDb,
   insertUserToDb,
+  deleteUserByIdFromDb,
 };

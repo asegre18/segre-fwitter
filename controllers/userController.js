@@ -1,4 +1,9 @@
-const { fetchUsers, fetchUserByIdFromDb, insertUserToDb } = require('../model/userOrm');
+const {
+  fetchUsers,
+  fetchUserByIdFromDb,
+  insertUserToDb,
+  deleteUserByIdFromDb,
+} = require('../model/userOrm');
 
 module.exports = {
   getAllUsersApi: async (_req, res) => {
@@ -26,12 +31,22 @@ module.exports = {
     }
   },
   getUserByIdApi: async (req, res) => {
-    console.log('I AM< BROKEN');
     const { userId } = req.params;
     try {
       res.json(await fetchUserByIdFromDb(userId));
     } catch (e) {
-      console.log('i am broken', e);
+      console.log('i am broken L:38', e);
+      res.status(400)
+        .json(e);
+    }
+  },
+  deleteUserByIdApi: async (req, res) => {
+    const { userId } = req.params;
+    try {
+      const deletedUser = await deleteUserByIdFromDb(userId);
+      res.json(deletedUser);
+    } catch (e) {
+      console.log('i am broken L:48', e);
       res.status(400)
         .json(e);
     }
