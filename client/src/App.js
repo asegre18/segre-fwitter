@@ -13,11 +13,11 @@ function App() {
   return (
      <Router>
        <Navbar/>
-       <Route exact path="/" component={About}/>
        <Route exact path="/discover" component={Discover}/>
        <Route exact path="/search" component={Search}/>
        <Route exact path="/user" component={User}/>
        <Route exact path='/users/user/:userId' component={UserView}/>
+       <Route exact path="/" component={About}/>
      </Router>
   );
 }
