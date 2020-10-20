@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { getUsers } from '../redux';
 import { useSelector, useDispatch } from 'react-redux';
 
 const useUsers = () => {
   const dispatch = useDispatch();
-  const { users } = useSelector(state => state.user);
-  // const [ users, setUsers ] = useState([]);
+  // const { users } = useSelector(state => state.user);
+  const [users, setUsers] = useState([]);
   // U had to send your api or an auth token on the headers
   useEffect(() => {
     axios.get('/api/users')
       .then(res => {
         console.log(res.data);
-        // setUsers(res.data);
-        dispatch(getUsers(res.data));
+        setUsers(res.data);
+        // dispatch(getUsers(res.data));
       })
       .catch(e => console.log(e));
   }, [dispatch]);
