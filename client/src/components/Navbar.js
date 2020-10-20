@@ -43,7 +43,7 @@ export default function ButtonAppBar() {
             Search
           </Button>
           <Button
-            to='/user'
+            to='/users'
             component={Link}
             color="inherit">
             User
