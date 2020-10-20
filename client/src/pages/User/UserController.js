@@ -5,7 +5,6 @@ import { Switch, Route } from 'react-router-dom';
 import { UserListView } from './UserViews';
 
 export const UserContainer = (props) => {
-
   return (
     <Switch>
       <Route exact path='/users' component={UserListView}/>
