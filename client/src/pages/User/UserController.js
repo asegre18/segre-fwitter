@@ -2,12 +2,16 @@
 // to the user right now
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { UserListView } from './UserViews';
+import {
+  UserCreateForm,
+  UserListView,
+} from './UserViews';
 
 export const UserContainer = (props) => {
   return (
     <Switch>
       <Route exact path='/users' component={UserListView}/>
+      <Route exact path='/users/create' component={UserCreateForm}/>
     </Switch>
   );
 };

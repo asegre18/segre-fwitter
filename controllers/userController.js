@@ -9,7 +9,6 @@ module.exports = {
   getAllUsersApi: async (_req, res) => {
     try {
       const users = await fetchUsers();
-      console.log(users);
       res.json(users);
     } catch (e) {
       console.log(e);
@@ -21,8 +20,7 @@ module.exports = {
     const { username, password } = req.body;
     console.log(req.body);
     try {
-      const result = await insertUserToDb(username, password);
-      const user = await fetchUserByIdFromDb(result.insertId);
+      const user = await insertUserToDb(username, password);
       res.json(user);
     } catch (e) {
       console.log(e);

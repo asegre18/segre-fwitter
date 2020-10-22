@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const {
   findAllUsers,
   findUserByIdQuery,
@@ -37,9 +38,12 @@ const fetchUserByIdFromDb = async (userId) => {
 
 // Insert
 const insertUserToDb = async (username, password) => {
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
   try {
-    const [result] = await connection.query(insertUserQuery, [username, password]);
-    return result;
+    const [result] = await connection.query(insertUserQuery, [username, hashedPassword]);
+    const [userResult] = await connection.query(findUserByIdQuery, result.insertId);
+    return userResult[0];
   } catch (e) {
     throw new Error(e);
   }
