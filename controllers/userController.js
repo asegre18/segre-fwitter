@@ -6,7 +6,7 @@ const {
 } = require('../model/userOrm');
 
 module.exports = {
-  getAllUsersApi: async (_req, res) => {
+  getAllUsersApi: async (req, res) => {
     try {
       const users = await fetchUsers();
       res.json(users);
