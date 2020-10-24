@@ -41,6 +41,20 @@ const jwtOptions = {
 
 const jwtStrategy = new JwtStrategy(jwtOptions, async (jwtToken, done) => {
   console.log(jwtToken);
+  let user;
+
+  try {
+    user = await fetchUserByIdFromDb(jwtToken.sub);
+  } catch (e) {
+    return done(e, null);
+  }
+
+  if (!user) {
+    return done(null, false);
+  } else {
+    return done(null, user);
+  }
+
 });
 
 // All of the tokens will be coming in from the header

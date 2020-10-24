@@ -27,6 +27,6 @@ router.route('/')
 
 router.route('/:userId')
   .get(getUserByIdApi)
-  .delete(deleteUserByIdApi);
+  .delete(authMiddleware, deleteUserByIdApi);
 
 module.exports = router;
