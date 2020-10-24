@@ -6,6 +6,10 @@ const {
   getUserByIdApi,
   deleteUserByIdApi,
 } = require('../../../controllers/userController');
+
+const authMiddleware = require('../../../middlewares/authorizationMiddleware');
+
+// router.use(authMiddleware);
 // /api/users prepended to every Route
 // Separation of concern.
 // Anything that has to do with routing stays in routing
@@ -18,7 +22,7 @@ const {
 // Also the controllers job to communicate between the view and the model
 //   /api/users
 router.route('/')
-  .get(getAllUsersApi)
+  .get(authMiddleware, getAllUsersApi)
   .post(insertUserApi);
 
 router.route('/:userId')
