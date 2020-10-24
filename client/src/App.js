@@ -6,7 +6,19 @@ import About from './components/About';
 import Discover from './components/Discover';
 import Search from './components/Search';
 
-import { UserContainer } from './pages/User';
+// You can also just do the code below
+// import {
+//   UserContainer,
+//   SignUp,
+// } from './pages';
+
+import {
+  UserContainer
+} from './pages/User';
+
+import {
+  WrappedSignUp
+} from './pages/Viewer';
 
 // import Contact from "./components/pages/Contact";
 
@@ -14,6 +26,7 @@ function App() {
   return (
     <Router>
       <Navbar/>
+      <Route path='/signup' component={WrappedSignUp}/>
       <Route path="/discover" component={Discover}/>
       <Route path="/search" component={Search}/>
       <Route path="/users" component={UserContainer}/>
