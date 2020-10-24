@@ -43,8 +43,10 @@ const SignUp = (props) => {
     console.log(formValues);
     //{ username: 'Your enterereduseRName', password: 'your password' }
     try {
-      const token = await axios.post('/auth/signup', formValues);
-      console.log('I AM THE SIGNUP USERS TOKEN', token);
+      const res = await axios.post('/auth/signup', formValues);
+      console.log('I AM THE SIGNUP USERS TOKEN', res.data);
+      localStorage.setItem('token', res.data);
+      // sessionStorage.setItem('token', res.data);
     } catch (e) {
       throw new Error(e);
     }
