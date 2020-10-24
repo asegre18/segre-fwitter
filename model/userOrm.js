@@ -53,6 +53,7 @@ const fetchUserByIdFromDb = async (userId) => {
 
 // Insert
 const insertUserToDb = async (username, password) => {
+  // going to generate some random String to add on to our hashed password once we start hashing it
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   try {

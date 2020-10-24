@@ -5,6 +5,7 @@ import { useFetchUsers } from '../UserHooks';
 
 export const UserListView = () => {
   useFetchUsers();
+
   return (
     <div>
       <Button

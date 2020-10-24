@@ -3,6 +3,7 @@ const router = require('express')
 const jwt = require('jsonwebtoken');
 // /auth prepended to everything
 const signInMiddleware = require('../../middlewares/signInMiddleware');
+// /auth/signin
 
 const tokenForUser = (id) => {
   return jwt.sign({
