@@ -48,6 +48,18 @@ export default function ButtonAppBar() {
             color="inherit">
             User
           </Button>
+          <Button
+            to='/signup'
+            component={Link}
+            color="inherit">
+            Sign Up
+          </Button>
+          <Button
+            to='/signin'
+            component={Link}
+            color="inherit">
+            Sign In
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

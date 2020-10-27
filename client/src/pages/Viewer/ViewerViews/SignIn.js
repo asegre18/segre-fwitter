@@ -36,19 +36,17 @@ const TextFieldInput = ({ input, meta, label }) => {
 //what handleSubmit will do is pass the forms Values as the first parameter
 // handleSubmit also preventsDefault for us right away
 // to the function that it's calling
-const SignUp = (props) => {
+const SignIn = (props) => {
   const { handleSubmit, history } = props;
 
   console.log(props);
-  const handleSignUp = async (formValues) => {
+  const handleSignIn = async (formValues) => {
     console.log(formValues);
     //{ username: 'Your enterereduseRName', password: 'your password' }
     try {
-      const res = await axios.post('/auth/signup', formValues);
-      console.log('I AM THE SIGNUP USERS TOKEN', res.data);
+      const res = await axios.post('/auth/signin', formValues);
       localStorage.setItem('token', res.data);
       history.push('/users');
-      // sessionStorage.setItem('token', res.data);
     } catch (e) {
       throw new Error(e);
     }
@@ -67,13 +65,13 @@ const SignUp = (props) => {
         component={TextFieldInput}
       />
       <Button
-        onClick={ handleSubmit(handleSignUp) }
+        onClick={ handleSubmit(handleSignIn) }
         variant="contained"
         color="primary">
-        Sign up
+        Sign in
       </Button>
     </form>
   );
 };
 
-export const WrappedSignUp = reduxForm({ form: 'signUpForm' })(SignUp);
+export const WrappedSignIn = reduxForm({ form: 'signInForm' })(SignIn);

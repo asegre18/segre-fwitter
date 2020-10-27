@@ -17,7 +17,8 @@ import {
 } from './pages/User';
 
 import {
-  WrappedSignUp
+  WrappedSignUp,
+  WrappedSignIn,
 } from './pages/Viewer';
 
 // import Contact from "./components/pages/Contact";
@@ -27,6 +28,7 @@ function App() {
     <Router>
       <Navbar/>
       <Route path='/signup' component={WrappedSignUp}/>
+      <Route path='/signin' component={WrappedSignIn}/>
       <Route path="/discover" component={Discover}/>
       <Route path="/search" component={Search}/>
       <Route path="/users" component={UserContainer}/>
