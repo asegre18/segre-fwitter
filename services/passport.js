@@ -25,10 +25,13 @@ const localStrategy = new LocalStrategy(async (username, password, done) => {
   if (user) {
     const doesPasswordMatch = await comparePassword(password, user.password);
     if (doesPasswordMatch) {
+      console.log(doesPasswordMatch);
       return done(null, user);
     }
+    console.log('happening');
     return done(null, false);
   } else {
+    console.log('happening');
     return done(null, false);
   }
 //   if no user was found call done like return done(null, false);

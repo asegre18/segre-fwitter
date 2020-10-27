@@ -65,7 +65,7 @@ export default function ButtonAppBar() {
             token ?
               <Button
                 color='inherit'
-                onClick={ handleSignOut }
+                onClick={ handleSignOut}
               >
                 Sign Out
               </Button> :
