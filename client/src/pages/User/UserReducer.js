@@ -17,11 +17,13 @@ const userSlice = createSlice({
       ...state,
       users: action.payload
     }),
+    getUser: (state, action) => ({ ...state, selectedUser: action.payload }),
   },
 });
 
 export const {
   getUsers,
+  getUser,
 } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;
