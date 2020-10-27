@@ -41,6 +41,7 @@ const jwtOptions = {
 
 const jwtStrategy = new JwtStrategy(jwtOptions, async (jwtToken, done) => {
   console.log(jwtToken);
+  // { sub: idOfTheUser, iat: timeThatThisTokenWasCreated }
   let user;
 
   try {
@@ -52,6 +53,8 @@ const jwtStrategy = new JwtStrategy(jwtOptions, async (jwtToken, done) => {
   if (!user) {
     return done(null, false);
   } else {
+    // take the user that is being passed as the 2nd parameter
+    // and attach it to req.user on the next request
     return done(null, user);
   }
 
