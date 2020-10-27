@@ -3,7 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setViewerToken } from '../pages/Viewer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +24,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+  const { token } = useSelector(state => state.viewer);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleSignOut = () => {
+    localStorage.removeItem('token');
+    dispatch(setViewerToken(null));
+    history.push('/');
+  };
 
   return (
     <div className={classes.root}>
@@ -48,20 +61,100 @@ export default function ButtonAppBar() {
             color="inherit">
             User
           </Button>
-          <Button
-            to='/signup'
-            component={Link}
-            color="inherit">
-            Sign Up
-          </Button>
-          <Button
-            to='/signin'
-            component={Link}
-            color="inherit">
-            Sign In
-          </Button>
+          {
+            token ?
+              <Button
+                color='inherit'
+                onClick={ handleSignOut }
+              >
+                Sign Out
+              </Button> :
+              <div>
+                <Button
+                  to='/signup'
+                  component={Link}
+                  color="inherit">
+                  Sign Up
+                </Button>
+                <Button
+                  to='/signin'
+                  component={Link}
+                  color="inherit">
+                  Sign In
+                </Button>
+              </div>
+          }
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+
+// function ButtonAppBar(props) {
+//   const classes = useStyles();
+//   const { token } = useSelector(state => state.viewer);
+//   const dispatch = useDispatch();
+//
+//   console.log(props);
+//   const handleSignOut = () => {
+//     localStorage.removeItem('token');
+//     dispatch(setViewerToken(null));
+//
+//   };
+//   return (
+//     <div className={classes.root}>
+//       <AppBar position="static">
+//         <Toolbar>
+//           <Button
+//             component={Link}
+//             to='/'
+//             color="inherit">
+//             About</Button>
+//           <Button
+//             to='/discover'
+//             component={Link}
+//             color="inherit">
+//             Discover
+//           </Button>
+//           <Button
+//             to='/search'
+//             component={Link}
+//             color="inherit">
+//             Search
+//           </Button>
+//           <Button
+//             to='/users'
+//             component={Link}
+//             color="inherit">
+//             User
+//           </Button>
+//           {
+//             token ?
+//               <Button
+//                 color='inherit'
+//               >
+//                 Sign Out
+//               </Button> :
+//               <div>
+//                 <Button
+//                   to='/signup'
+//                   component={Link}
+//                   color="inherit">
+//                   Sign Up
+//                 </Button>
+//                 <Button
+//                   to='/signin'
+//                   component={Link}
+//                   color="inherit">
+//                   Sign In
+//                 </Button>
+//               </div>
+//           }
+//         </Toolbar>
+//       </AppBar>
+//     </div>
+//   );
+// }
+//
+// export default withRouter(ButtonAppBar);
