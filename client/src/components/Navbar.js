@@ -55,12 +55,15 @@ export default function ButtonAppBar() {
             color="inherit">
             Search
           </Button>
-          <Button
-            to='/users'
-            component={Link}
-            color="inherit">
-            User
-          </Button>
+          {
+            token ?
+              <Button
+                to='/users'
+                component={Link}
+                color="inherit">
+                User
+              </Button> : null
+          }
           {
             token ?
               <Button
