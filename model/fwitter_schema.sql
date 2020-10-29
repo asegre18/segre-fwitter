@@ -17,5 +17,5 @@ CREATE TABLE fweets (
     fweet VARCHAR(255) NOT NULL,
     userId INT references users(id),
     PRIMARY KEY (id)
-)
+);
 
